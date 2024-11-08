@@ -15,7 +15,13 @@ async function deleteItem(userCart, name) {
 }
 // ->remover um item do carrinho 
 async function removeItem(userCart, index) {
+    // transforma o indice visual do usuario, para o indice do backend
+    const deleteIndex = index - 1;
 
+    // e maior do que zero e se é menor do que o tamanho do carrinho
+    if(index >= 0 && index < userCart.length) {
+        userCart.splice(deleteIndex, 1);
+    }
 }
 
 // ->calcular o total da compra
@@ -26,6 +32,7 @@ async function calculateTotal(userCart) {
     console.log(`🎁 Total: R$ ${result}`);
 }
 
+// mostra todos os items do carrinho
 async function displayCart(userCart) {
     console.log("\nShopee cart list:")
     userCart.forEach((item, index) => {
